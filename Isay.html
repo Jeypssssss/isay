@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isay</title>
+    <style>
+
+        body {
+            background: url(1.jpg);
+            margin: 0;
+            overflow: hidden;
+            background-size: cover;
+            
+            background-repeat: no-repeat;
+           
+          
+            
+        }
+
+        .name {
+            font-family: 'Times New Roman', Times, serif;
+            position: absolute;
+            font-size: 8em;
+            color: #FF0000; 
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        
+
+        const names = ["Isay ", "Isay", "I love You", "Isay", "I love You"];
+
+        function createFallingName() {
+            const name = document.createElement("div");
+            name.className = "name";
+            name.style.left = `${Math.random() * 100}%`;
+            name.textContent = names[Math.floor(Math.random() * names.length)];
+            document.body.appendChild(name);
+
+           
+            name.addEventListener("animationiteration", () => {
+                document.body.removeChild(name);
+            });
+        }
+
+        
+        setInterval(createFallingName, 2000);
+    </script>
+</body>
+</html>
